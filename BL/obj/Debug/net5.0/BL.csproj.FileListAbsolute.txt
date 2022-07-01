@@ -42,7 +42,6 @@ C:\Users\Acer\Desktop\Shop\BL\obj\Debug\net5.0\ref\BL.dll
 C:\Users\Acer\Desktop\Shop\BL\obj\Debug\net5.0\BL.pdb
 E:\DemoWebStore-main\BL\bin\Debug\net5.0\BL.deps.json
 E:\DemoWebStore-main\BL\bin\Debug\net5.0\BL.dll
-E:\DemoWebStore-main\BL\bin\Debug\net5.0\ref\BL.dll
 E:\DemoWebStore-main\BL\bin\Debug\net5.0\BL.pdb
 E:\DemoWebStore-main\BL\bin\Debug\net5.0\Context.dll
 E:\DemoWebStore-main\BL\bin\Debug\net5.0\Domain.dll
@@ -61,3 +60,4 @@ E:\DemoWebStore-main\BL\obj\Debug\net5.0\BL.csproj.CopyComplete
 E:\DemoWebStore-main\BL\obj\Debug\net5.0\BL.dll
 E:\DemoWebStore-main\BL\obj\Debug\net5.0\ref\BL.dll
 E:\DemoWebStore-main\BL\obj\Debug\net5.0\BL.pdb
+E:\DemoWebStore-main\BL\obj\Debug\net5.0\refint\BL.dll

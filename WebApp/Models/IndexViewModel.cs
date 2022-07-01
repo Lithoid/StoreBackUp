@@ -11,6 +11,7 @@ namespace WebApp.Models
     {
         public IEnumerable<ProductViewModel> Products { get; set; }
         public IEnumerable<CategoryViewModel> Categories { get; set; }
+        public ProductViewModel Product { get; set; }
         public PageViewModel PageViewModel { get; set; }
     }
 }

@@ -29,5 +29,10 @@ namespace Entities
 
 
 
+        public List<Order> Orders { get; set; }
+        public List<CartItemOrder> CartItemOrders { get; set; }
+
+
+
     }
 }

@@ -19,6 +19,8 @@ namespace BL
         public System.DateTime DateCreated { get; set; }
         public Guid ProductId { get; set; }
         public string ProductName { get; set; }
+        public decimal Price { get; set; }
+
 
         public CartViewModel()
         {
@@ -32,8 +34,10 @@ namespace BL
             CartId = cartItem.CartId;
             Quantity = cartItem.Quantity;
             DateCreated = cartItem.DateCreated;
-            ProductName = cartItem.Product?.Name;
+            ProductName = cartItem.Product?.Name;     
             ProductId = cartItem.ProductId;
+            Price = cartItem.Product.RetailPrice;
+            
         }
 
         public static implicit operator CartItem(CartViewModel model)
@@ -84,6 +88,7 @@ namespace BL
             {
                 return repository.AllItems
                     .Where(p => p.CartId == cartId)
+                    .Include(p => p.Product)
                     .Select(p => new CartViewModel(p));
             }
             return (repository.AllItems as DbSet<CartItem>)

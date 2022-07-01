@@ -32,7 +32,6 @@ E:\DemoWebStore-main\Domain\bin\Debug\net5.0\Domain.deps.json
 E:\DemoWebStore-main\Domain\bin\Debug\net5.0\Domain.runtimeconfig.json
 E:\DemoWebStore-main\Domain\bin\Debug\net5.0\Domain.runtimeconfig.dev.json
 E:\DemoWebStore-main\Domain\bin\Debug\net5.0\Domain.dll
-E:\DemoWebStore-main\Domain\bin\Debug\net5.0\ref\Domain.dll
 E:\DemoWebStore-main\Domain\bin\Debug\net5.0\Domain.pdb
 E:\DemoWebStore-main\Domain\obj\Debug\net5.0\Domain.csproj.AssemblyReference.cache
 E:\DemoWebStore-main\Domain\obj\Debug\net5.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
@@ -43,3 +42,4 @@ E:\DemoWebStore-main\Domain\obj\Debug\net5.0\Domain.dll
 E:\DemoWebStore-main\Domain\obj\Debug\net5.0\ref\Domain.dll
 E:\DemoWebStore-main\Domain\obj\Debug\net5.0\Domain.pdb
 E:\DemoWebStore-main\Domain\obj\Debug\net5.0\Domain.genruntimeconfig.cache
+E:\DemoWebStore-main\Domain\obj\Debug\net5.0\refint\Domain.dll

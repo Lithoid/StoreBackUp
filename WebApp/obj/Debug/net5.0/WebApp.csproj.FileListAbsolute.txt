@@ -403,7 +403,6 @@ E:\DemoWebStore-main\WebApp\bin\Debug\net5.0\WebApp.deps.json
 E:\DemoWebStore-main\WebApp\bin\Debug\net5.0\WebApp.runtimeconfig.json
 E:\DemoWebStore-main\WebApp\bin\Debug\net5.0\WebApp.runtimeconfig.dev.json
 E:\DemoWebStore-main\WebApp\bin\Debug\net5.0\WebApp.dll
-E:\DemoWebStore-main\WebApp\bin\Debug\net5.0\ref\WebApp.dll
 E:\DemoWebStore-main\WebApp\bin\Debug\net5.0\WebApp.pdb
 E:\DemoWebStore-main\WebApp\bin\Debug\net5.0\WebApp.Views.dll
 E:\DemoWebStore-main\WebApp\bin\Debug\net5.0\WebApp.Views.pdb
@@ -607,3 +606,4 @@ E:\DemoWebStore-main\WebApp\obj\Debug\net5.0\Razor\Views\Roles\Create.cshtml.g.c
 E:\DemoWebStore-main\WebApp\obj\Debug\net5.0\Razor\Views\Roles\Edit.cshtml.g.cs
 E:\DemoWebStore-main\WebApp\obj\Debug\net5.0\Razor\Views\Roles\Index.cshtml.g.cs
 E:\DemoWebStore-main\WebApp\obj\Debug\net5.0\Razor\Views\Roles\UserList.cshtml.g.cs
+E:\DemoWebStore-main\WebApp\obj\Debug\net5.0\refint\WebApp.dll

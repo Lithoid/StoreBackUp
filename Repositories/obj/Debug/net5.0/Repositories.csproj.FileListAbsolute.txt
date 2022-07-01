@@ -46,7 +46,6 @@ E:\DemoWebStore-main\Repositories\bin\Debug\net5.0\Repositories.deps.json
 E:\DemoWebStore-main\Repositories\bin\Debug\net5.0\Repositories.runtimeconfig.json
 E:\DemoWebStore-main\Repositories\bin\Debug\net5.0\Repositories.runtimeconfig.dev.json
 E:\DemoWebStore-main\Repositories\bin\Debug\net5.0\Repositories.dll
-E:\DemoWebStore-main\Repositories\bin\Debug\net5.0\ref\Repositories.dll
 E:\DemoWebStore-main\Repositories\bin\Debug\net5.0\Repositories.pdb
 E:\DemoWebStore-main\Repositories\bin\Debug\net5.0\Context.dll
 E:\DemoWebStore-main\Repositories\bin\Debug\net5.0\Domain.dll
@@ -64,3 +63,4 @@ E:\DemoWebStore-main\Repositories\obj\Debug\net5.0\Repositories.dll
 E:\DemoWebStore-main\Repositories\obj\Debug\net5.0\ref\Repositories.dll
 E:\DemoWebStore-main\Repositories\obj\Debug\net5.0\Repositories.pdb
 E:\DemoWebStore-main\Repositories\obj\Debug\net5.0\Repositories.genruntimeconfig.cache
+E:\DemoWebStore-main\Repositories\obj\Debug\net5.0\refint\Repositories.dll

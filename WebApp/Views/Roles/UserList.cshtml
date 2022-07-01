@@ -2,7 +2,18 @@
 
 <h2>User list</h2>
 <table class="table">
-    @foreach (var user in Model)
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                 @Html.DisplayNameFor(model=>model.Email)
+            </th>
+            <th>
+                    Access
+            </th>
+        </tr>
+    </thead>   
+    <tbody>
+        @foreach (var user in Model)
     {
         <tr>
             <td>@user.Email</td>
@@ -12,4 +23,6 @@
 
         </tr>
     }
+    </tbody>
+    
 </table>

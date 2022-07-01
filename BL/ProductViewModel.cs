@@ -17,6 +17,7 @@ namespace BL
         public string Name { get; set; }
 
         public string Description { get; set; }
+        public string About { get; set; }
         public Guid CategoryId { get; set; }
         public string CategoryName { get; set; }
 
@@ -41,8 +42,8 @@ namespace BL
             Id = product.Id;
             Name = product.Name;
             Description = product.Description;
+            About = product.About;  
             RetailPrice = product.RetailPrice;
-            WholesalePrice = product.WholesalePrice;
             CategoryName = product.Category?.Name;
             CategoryId = product.CategoryId;
             ImageIds = product.Assets.Select(a => a.Id).ToList();
@@ -54,8 +55,8 @@ namespace BL
             {
                 Id = model.Id,
                 Description = model.Description,
+                About = model.About,
                 RetailPrice = model.RetailPrice,
-                WholesalePrice = model.WholesalePrice,
                 ProductAssets = model.ImageIds.Select(i => new ProductAsset { AssetId = i, ProductId = model.Id }).ToList(),
                 CategoryId = model.CategoryId,
                 Name = model.Name

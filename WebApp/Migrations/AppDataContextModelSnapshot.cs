@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
+#nullable disable
+
 namespace WebApp.Migrations
 {
     [DbContext(typeof(AppDataContext))]
@@ -15,9 +17,10 @@ namespace WebApp.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.3")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "6.0.6")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
             modelBuilder.Entity("Entities.Asset", b =>
                 {
@@ -83,6 +86,23 @@ namespace WebApp.Migrations
                     b.ToTable("CartItems");
                 });
 
+            modelBuilder.Entity("Entities.CartItemOrder", b =>
+                {
+                    b.Property<Guid>("CartItemId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("CartItem Id");
+
+                    b.Property<Guid>("OrderId")
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("Order Id");
+
+                    b.HasKey("CartItemId", "OrderId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("CartItemOrder");
+                });
+
             modelBuilder.Entity("Entities.Category", b =>
                 {
                     b.Property<Guid>("Id")
@@ -98,23 +118,52 @@ namespace WebApp.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+                });
 
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("4ba02f5a-f161-4fd3-901d-66f53a126805"),
-                            Name = "Пиво Разлив"
-                        },
-                        new
-                        {
-                            Id = new Guid("437d0c37-867f-4b1b-9b7f-809bb5b24a48"),
-                            Name = "Пиво Банки"
-                        },
-                        new
-                        {
-                            Id = new Guid("28bac0a8-851e-4130-95ab-fa31a9e75d90"),
-                            Name = "Пиво Бокал"
-                        });
+            modelBuilder.Entity("Entities.Order", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier")
+                        .HasColumnName("Id");
+
+                    b.Property<string>("City")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("City");
+
+                    b.Property<string>("ClientName")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("ClientName");
+
+                    b.Property<string>("ClientPhone")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("ClientPhone");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("Email");
+
+                    b.Property<int>("NovaPoshta")
+                        .HasColumnType("int")
+                        .HasColumnName("NovaPoshta");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasMaxLength(50)
+                        .HasColumnType("datetime2")
+                        .HasColumnName("OrderDate");
+
+                    b.Property<string>("Status")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
+                        .HasColumnName("Status");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("Entities.Product", b =>
@@ -123,6 +172,11 @@ namespace WebApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier")
                         .HasColumnName("Id");
+
+                    b.Property<string>("About")
+                        .HasMaxLength(512)
+                        .HasColumnType("nvarchar(512)")
+                        .HasColumnName("About");
 
                     b.Property<Guid>("CategoryId")
                         .HasColumnType("uniqueidentifier");
@@ -138,9 +192,6 @@ namespace WebApp.Migrations
                         .HasColumnName("Name");
 
                     b.Property<decimal>("RetailPrice")
-                        .HasColumnType("money");
-
-                    b.Property<decimal>("WholesalePrice")
                         .HasColumnType("money");
 
                     b.HasKey("Id");
@@ -178,6 +229,25 @@ namespace WebApp.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("Entities.CartItemOrder", b =>
+                {
+                    b.HasOne("Entities.CartItem", "CartItem")
+                        .WithMany("CartItemOrders")
+                        .HasForeignKey("CartItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Entities.Order", "Order")
+                        .WithMany("CartItemOrders")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CartItem");
+
+                    b.Navigation("Order");
+                });
+
             modelBuilder.Entity("Entities.Product", b =>
                 {
                     b.HasOne("Entities.Category", "Category")
@@ -213,16 +283,26 @@ namespace WebApp.Migrations
                     b.Navigation("ProductAssets");
                 });
 
+            modelBuilder.Entity("Entities.CartItem", b =>
+                {
+                    b.Navigation("CartItemOrders");
+                });
+
             modelBuilder.Entity("Entities.Category", b =>
                 {
                     b.Navigation("Products");
                 });
 
+            modelBuilder.Entity("Entities.Order", b =>
+                {
+                    b.Navigation("CartItemOrders");
+                });
+
             modelBuilder.Entity("Entities.Product", b =>
                 {
-                    b.Navigation("cartItems");
-
                     b.Navigation("ProductAssets");
+
+                    b.Navigation("cartItems");
                 });
 #pragma warning restore 612, 618
         }

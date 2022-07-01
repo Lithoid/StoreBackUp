@@ -1,0 +1,64 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model BL.OrderViewModel
+@using Repositories
+@inject ICartItemRepository _CartItem
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-sm">
+        <p>User details</p>
+        <form asp-action="AcceptOrder" asp-route-cartId="@ViewData["cartId"]"  method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="ClientName" class="control-label"></label>
+                <input asp-for="ClientName"  class="form-control" />
+                <span asp-validation-for="ClientName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClientPhone" class="control-label"></label>
+                <input asp-for="ClientPhone"  class="form-control" />
+                <span asp-validation-for="ClientPhone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email"  class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City"  class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NovaPoshta" class="control-label"></label>
+                <input asp-for="NovaPoshta"  class="form-control" />
+                <span asp-validation-for="NovaPoshta" class="text-danger"></span>
+            </div>
+            <input type="submit" class="btn btn-dark" value="Submit" />
+        </form>
+    </div>
+    <div class="col-sm">
+        <p>Summary</p>
+       @*
+        @foreach (var item in _CartItem.AllItems.Where(c=>c.Orders.Select(order=>order.Id).Contains(Model.Id)))
+       {
+           <div class="ms-3">
+                <h5>@item.Product.Name</h5>
+                <p class="small mb-0">@item.Product.Description</p>
+           </div>
+       }
+       *@
+      
+
+    </div>
+
+</div>

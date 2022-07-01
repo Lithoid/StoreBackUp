@@ -44,6 +44,7 @@ namespace WebApp
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<IAssetRepository, AssetRepository>();
             services.AddTransient<ICartItemRepository, CartItemRepository>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
             services.AddSession();
             services.AddDatabaseDeveloperPageExceptionFilter();
 
@@ -85,12 +86,6 @@ namespace WebApp
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllerRoute(
-                    name: "product",
-                    pattern: "Product/{action}/{id?}",
-                    defaults: new { controller = "Product", action = "List" });
-                endpoints.MapRazorPages();
-
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Shop}/{action=List}/{id?}");

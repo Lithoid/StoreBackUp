@@ -5,62 +5,67 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>List</h1>
-
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CartId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Quantity)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DateCreated)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProductName)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
+<h1>Cart</h1>
+<form asp-controller="Order" asp-action="MakeOrder" asp-route-cartId="@Model.First().CartId" >
+    <div class="container padding-bottom-3x mb-1">
+        <!-- Shopping Cart-->
+        <div class="table-responsive shopping-cart">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Product Name</th>
+                        <th class="text-center">@Html.DisplayNameFor(model => model.Quantity)</th>
+                        <th class="text-center">Price</th>
+                        <th class="text-center"><a class="btn btn-sm btn-outline-danger" asp-action="DeleteAll">Clear Cart</a>
+                            <a class="btn btn-sm btn-outline-success" asp-controller="Shop" asp-action="List">Back to shop</a></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Id)
+                <div class="product-item">
+                    <div class="product-info">
+                        <h4 class="product-title"><a asp-controller="Product" asp-action="Details" asp-route-id="@item.ProductId">@item.ProductName</a></h4>
+                    </div>
+                </div>
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CartId)
+            <td class="text-center">
+                <div class="count-input">
+                    <select class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Quantity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateCreated)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProductName)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id  })
+            <td class="text-center text-lg text-medium">@item.Price.ToString("# $")</td>
+            <td class="text-center">
+                <a asp-action="Delete" asp-route-id="@item.Id" Delete class="remove-from-cart" data-toggle="tooltip" title="" data-original-title="Remove item">Delete<i class="fa fa-trash"></i></a>
             </td>
         </tr>
 }
-    </tbody>
-</table>
+                </tbody>
+            </table>
+        </div>
+        <div class="shopping-cart-footer">
+            <div class="column text-lg">Subtotal: $<span id="total" class="text-medium"></span></div>
+        </div>
+        <div class="shopping-cart-footer">
+            <div class="row">
+                 <div class="col"><input type="submit" class="btn btn-success" value="Continue"></div>
+                 <div class="col"><a class="btn btn-info" asp-action="Update">Update cart </a></div>
+
+            </div>
+           
+        </div>
+    </div>
+</form>
+
+<script>
+
+
+</script>

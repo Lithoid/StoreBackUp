@@ -1,6 +1,7 @@
 ﻿using Domain;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -9,11 +10,38 @@ using System.Threading.Tasks;
 namespace Entities
 {
 
-    [Table("Products")]
+    [Table("Orders")]
     public class Order :DbEntity
     {
 
+        [Column("Status")]
+        [MaxLength(50)]
         public string Status { get; set; }
+
+        [Column("OrderDate")]
+        [MaxLength(50)]
+        public DateTime OrderDate { get; set; }
+        [Column("ClientPhone")]
+        [MaxLength(50)]
+        public string ClientPhone { get; set; }
+        [Column("ClientName")]
+        [MaxLength(50)]
+        public string ClientName { get; set; }
+        [Column("Email")]
+        [MaxLength(50)]
+        public string Email { get; set; }
+
+        [Column("City")]
+        [MaxLength(50)]
+        public string City { get; set; }
+
+        [Column("NovaPoshta")]
+        public int NovaPoshta { get; set; }
+
+        public List<CartItem> CartItems { get; set; }
+        public List<CartItemOrder> CartItemOrders { get; set; }
+
+
 
 
     }

@@ -22,6 +22,7 @@ namespace Domain
         Task<bool> ChangeItemAsync(T item);
 
         Task<bool> DeleteItemAsync(Guid id);
+        Task<bool> DeleteItemsAsync(IEnumerable<T> entities);
 
         Task<int> SaveChangesAsync();
     }

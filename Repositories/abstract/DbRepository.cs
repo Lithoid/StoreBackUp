@@ -48,6 +48,15 @@ namespace Repositories
             _context.Set<T>().Remove(candidate);
             return await SaveChangesAsync() > 0;
         }
+        public async Task<bool> DeleteItemsAsync(IEnumerable<T> entities)
+        {
+            foreach (var item in entities)
+            {
+                var h = _context.Set<T>().Find(item.Id);
+                _context.Set<T>().Remove(h);
+            }
+            return await SaveChangesAsync() > 0;
+        }
 
         public async Task<T> GetItemAsync(Guid id)
         {

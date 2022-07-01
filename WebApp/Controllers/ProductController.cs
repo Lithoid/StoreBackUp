@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 using BL;
 using Repositories;
 using Microsoft.AspNetCore.Authorization;
+using WebApp.Models;
 
 namespace WebApp.Controllers
 {
 
-    [Authorize(Roles = "Admin")]
+    
     public class ProductController : Controller
     {
         private IProductRepository _productRepository;
@@ -20,13 +21,16 @@ namespace WebApp.Controllers
             _productRepository = productRepository;
         }
 
-        public IActionResult List()
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> List()
         {
             return View(ProductViewModel.GetProductList(_productRepository));
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create(ProductViewModel model)
         {
+
+            
             if (model.IsEmpty)
             {
                 return View(model);
@@ -39,12 +43,12 @@ namespace WebApp.Controllers
 
             return Redirect("Error");
         }
-
-        public IActionResult Edit(Guid id)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Edit(Guid id)
         {
             return View(ProductViewModel.GetProductById(id, _productRepository));
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AcceptEdit(ProductViewModel model)
         {
             if (!model.IsEmpty)
@@ -53,12 +57,12 @@ namespace WebApp.Controllers
             }
             return Redirect("~/Product/List");
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(Guid id)
         {
             return View(ProductViewModel.GetProductById(id, _productRepository));
         }
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AcceptDelete(Guid? id)
         {
             if (id.HasValue)
@@ -68,9 +72,14 @@ namespace WebApp.Controllers
             return Redirect("~/Product/List");
         }
 
-        public IActionResult Details(Guid id)
+        public async Task<IActionResult> Details(Guid id)
         {
-            return View(ProductViewModel.GetProductById(id, _productRepository));
+            IndexViewModel model = new IndexViewModel();
+            model.Product = ProductViewModel.GetProductById(id, _productRepository);
+            model.Products = ProductViewModel.GetProductList(_productRepository,model.Product.CategoryId);
+
+            return View(model);
         }
+        
     }
 }

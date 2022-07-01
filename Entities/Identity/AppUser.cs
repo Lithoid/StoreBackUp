@@ -6,7 +6,7 @@ namespace Entities
     public class AppUser : IdentityUser<Guid>
     {
 
-      
+
     
 
 

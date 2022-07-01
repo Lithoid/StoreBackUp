@@ -42,7 +42,6 @@ E:\DemoWebStore-main\Context\bin\Debug\net5.0\Context.deps.json
 E:\DemoWebStore-main\Context\bin\Debug\net5.0\Context.runtimeconfig.json
 E:\DemoWebStore-main\Context\bin\Debug\net5.0\Context.runtimeconfig.dev.json
 E:\DemoWebStore-main\Context\bin\Debug\net5.0\Context.dll
-E:\DemoWebStore-main\Context\bin\Debug\net5.0\ref\Context.dll
 E:\DemoWebStore-main\Context\bin\Debug\net5.0\Context.pdb
 E:\DemoWebStore-main\Context\bin\Debug\net5.0\Domain.dll
 E:\DemoWebStore-main\Context\bin\Debug\net5.0\Entities.dll
@@ -58,3 +57,4 @@ E:\DemoWebStore-main\Context\obj\Debug\net5.0\Context.dll
 E:\DemoWebStore-main\Context\obj\Debug\net5.0\ref\Context.dll
 E:\DemoWebStore-main\Context\obj\Debug\net5.0\Context.pdb
 E:\DemoWebStore-main\Context\obj\Debug\net5.0\Context.genruntimeconfig.cache
+E:\DemoWebStore-main\Context\obj\Debug\net5.0\refint\Context.dll

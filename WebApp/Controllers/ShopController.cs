@@ -26,12 +26,13 @@ namespace WebApp.Controllers
             return View();
         }
 
-        public IActionResult List(Guid? id, Guid? categoryId, int page = 1)
+        public async Task<IActionResult> List(Guid? id, Guid? categoryId, int page = 1)
         {
            
-            int pageSize = 3;   // количество элементов на странице
+            int pageSize = 6;   // количество элементов на странице
             IQueryable<ProductViewModel> source = ProductViewModel.GetProductList(_productRepository, categoryId);
-          
+
+            ViewData["Category"] = categoryId;
             var categories = CategoryViewModel.GetCategoryList(_categoryRepository);
             var count = source.Count();
             var items = source.Skip((page - 1) * pageSize).Take(pageSize).ToList();

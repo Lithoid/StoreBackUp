@@ -2,17 +2,25 @@
 @using BL
 
 
-@{ ViewData["Title"] = "List";
-    Layout = "~/Views/Shared/_Layout.cshtml"; }
+@{
+    ViewData["Title"] = "List";
+    
+
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
 
 <h1>List</h1>
 
 <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group" role="group" aria-label="First group">
+    <a type="button" asp-action="List"  class="btn btn-secondary ml-1">All</a>
+</div>
     @foreach (CategoryViewModel category in Model.Categories)
     {
 <div class="btn-group" role="group" aria-label="First group">
-    <a type="button" asp-action="List" asp-route-categoryId="@category.Id" class="btn btn-secondary">@category.Name</a>
+    <a type="button" asp-action="List" asp-route-categoryId="@category.Id" class="btn btn-secondary ml-1">@category.Name</a>
 </div>
+    
     }
 
 </div>
@@ -32,7 +40,7 @@
                    asp-action="Details"
                    asp-route-id=@item.Id>@item.Name</a>
             </h5>
-            <span class="pull-right label label-primary">@item.RetailPrice.ToString("# руб")</span>
+            <span class="pull-right label label-primary">@item.RetailPrice.ToString("# $")</span>
             <a asp-controller="CartItem" asp-action="Add" asp-route-id=@item.Id>Add to cart</a>
         </div>
     </div>
@@ -45,16 +53,31 @@
     {
 <a asp-action="List"
    asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+    asp-route-categoryId=@ViewData["Category"]
    class="btn btn-outline-dark">
     <i class="glyphicon glyphicon-chevron-left"></i>
-    Назад
+    Backward
 </a>}
+    @if(Model.PageViewModel.PageNumber>1){
+        for (int i = 1; i < Model.PageViewModel.PageNumber; i++)
+         {
+                <a asp-action="List"
+        asp-route-page="@i"
+        asp-route-categoryId=@ViewData["Category"]
+         class="btn btn-outline-dark">
+         <i class="glyphicon glyphicon-chevron-left"></i>
+         @i
+</a>
+         }
+
+    }
     @if (Model.PageViewModel.HasNextPage)
     {
 <a asp-action="List"
    asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+    asp-route-categoryId=@ViewData["Category"]
    class="btn btn-outline-dark">
-    Вперед
+    Forward
     <i class="glyphicon glyphicon-chevron-right"></i>
 </a>}
 

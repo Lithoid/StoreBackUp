@@ -10,6 +10,7 @@ namespace Context
         public DbSet<Asset> Assets { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         public DbSet<CartItem> CartItems { get; set; }
         public AppDataContext(DbContextOptions<AppDataContext> options)
@@ -21,8 +22,6 @@ namespace Context
                     prod =>
                     {
                         prod.Property(p => p.RetailPrice)
-                            .HasColumnType("money");
-                        prod.Property(p => p.WholesalePrice)
                             .HasColumnType("money");
 
                         prod.HasOne(p => p.Category)
@@ -43,9 +42,13 @@ namespace Context
                                 pa => pa.HasKey(
                                     qa => new { qa.ProductId, qa.AssetId })
                                 );
+
+                       
+
                     });
 
             modelBuilder.Entity<Category>();
+            modelBuilder.Entity<Order>();
 
             modelBuilder.Entity<CartItem>(
                   cart =>
@@ -53,6 +56,21 @@ namespace Context
                       cart.HasOne(c => c.Product)
                           .WithMany(p => p.cartItems)
                           .HasForeignKey(c => c.ProductId);
+
+                      cart.HasMany(c => c.Orders)
+                           .WithMany(o => o.CartItems)
+                           .UsingEntity<CartItemOrder>(
+                               co => co.HasOne(c => c.Order)
+                                   .WithMany(o => o.CartItemOrders)
+                                   .HasForeignKey(o => o.OrderId),
+
+                               co => co.HasOne(c => c.CartItem)
+                                   .WithMany(c => c.CartItemOrders)
+                                   .HasForeignKey(o => o.CartItemId),
+
+                               co => co.HasKey(
+                                   qa => new { qa.CartItemId, qa.OrderId })
+                               );
 
                   });
 

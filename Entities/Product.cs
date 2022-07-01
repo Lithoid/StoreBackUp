@@ -20,13 +20,21 @@ namespace Entities
         [MaxLength(512)]
         public string Description { get; set; }
 
+        [Column("About")]
+        [MaxLength(512)]
+        public string About { get; set; }
+
         public Guid CategoryId { get; set; }
         public Category Category { get; set; }
 
         public List<CartItem> cartItems { get; set; }
+
+
         public List<Asset> Assets { get; set; }
         public List<ProductAsset> ProductAssets { get; set; }
+
+
+
         public decimal RetailPrice { get; set; }
-        public decimal WholesalePrice { get; set; }
     }
 }
