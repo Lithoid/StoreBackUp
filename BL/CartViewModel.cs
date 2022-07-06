@@ -20,6 +20,7 @@ namespace BL
         public Guid ProductId { get; set; }
         public string ProductName { get; set; }
         public decimal Price { get; set; }
+        public string ProductAbout { get; set; }
 
 
         public CartViewModel()
@@ -37,7 +38,9 @@ namespace BL
             ProductName = cartItem.Product?.Name;     
             ProductId = cartItem.ProductId;
             Price = cartItem.Product.RetailPrice;
-            
+            ProductAbout =new string(cartItem.Product.About.Take(20).ToArray());
+
+
         }
 
         public static implicit operator CartItem(CartViewModel model)

@@ -51,7 +51,7 @@ namespace WebApp
             services.AddDefaultIdentity<AppUser>(options =>
                 {
                     options.SignIn.RequireConfirmedAccount = true;
-                    options.Password.RequiredLength = 12;
+                    options.Password.RequiredLength = 5;
                 })
                 .AddRoles<AppRole>()
                 .AddEntityFrameworkStores<AppIdentityContext>();

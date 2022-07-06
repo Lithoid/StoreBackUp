@@ -13,5 +13,6 @@
     <_SelectedScaffolderID>IdentityScaffolder</_SelectedScaffolderID>
     <_SelectedScaffolderCategoryPath>root/Identity</_SelectedScaffolderCategoryPath>
     <WebStackScaffolding_DbContextTypeFullName>Context.AppDataContext</WebStackScaffolding_DbContextTypeFullName>
+    <NameOfLastUsedPublishProfile>E:\DemoWebStore-main\WebApp\Properties\PublishProfiles\MusicWebStore - Web Deploy.pubxml</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

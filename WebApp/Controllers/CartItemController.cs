@@ -82,8 +82,17 @@ namespace WebApp.Controllers
             {
                 userId = Guid.Parse(_userManager.GetUserId(User));
             }
-            var items = CartViewModel.GetCartItemList(_cartItemRepository, userId).Count();
+            var items = CartViewModel.GetCartItemList(_cartItemRepository, userId);
+
+            ViewBag.Subtotal = 0;
+            foreach (var item in items)
+            {
+                ViewBag.Subtotal += item.Quantity * item.Price;
+            }
             
+
+
+
             if (CartViewModel.GetCartItemList(_cartItemRepository, userId).Count()==0)
             {
                 return Redirect("~/Shop/List");

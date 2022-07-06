@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
 using Entities;
 using Microsoft.AspNetCore.Authorization;
+using WebApp.Models;
 
 namespace WebApp.Controllers
 {
@@ -59,19 +60,27 @@ namespace WebApp.Controllers
                 ViewData["cartId"] = cartId;
             }
 
-            OrderViewModel model = new OrderViewModel();
+            CartOrderViewModel model = new CartOrderViewModel();
+            model.Order = new OrderViewModel();
+            model.CartItems = CartViewModel.GetCartItemList(_cartItemRepository, cartId);
 
+            ViewBag.Subtotal = 0;
+            foreach (var item in model.CartItems)
+            {
+                ViewBag.Subtotal += item.Quantity * item.Price;
+            }
 
             return View("MakeOrder", model);
         }
-        public async Task<IActionResult> AcceptOrder(OrderViewModel model, Guid? cartId)
+        public async Task<IActionResult> AcceptOrder(CartOrderViewModel model, Guid? cartId)
         {
             var items = CartViewModel.GetCartItemList(_cartItemRepository, cartId);
-            model.OrderDate = DateTime.Now;
-            model.Status = "Waiting";
-            model.CartItemIds = items.Select(c => c.Id).ToList();
+          
+            model.Order.OrderDate = DateTime.Now;
+            model.Order.Status = "Waiting";
+            model.Order.CartItemIds = items.Select(c => c.Id).ToList();
 
-            if (await _orderRepository.AddItemAsync(model))
+            if (await _orderRepository.AddItemAsync(model.Order))
             {
                 return Redirect("~/Shop/List");
 

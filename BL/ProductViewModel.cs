@@ -25,6 +25,8 @@ namespace BL
         public decimal RetailPrice { get; set; }
 
         public decimal WholesalePrice { get; set; }
+
+
         public List<Guid> ImageIds { get; set; } = new List<Guid>();
         public Guid? Asset { get; set; }
 

@@ -1,0 +1,17 @@
+E:\DemoWebStore-main\Entities\bin\Release\net6.0\Entities.deps.json
+E:\DemoWebStore-main\Entities\bin\Release\net6.0\Entities.runtimeconfig.json
+E:\DemoWebStore-main\Entities\bin\Release\net6.0\Entities.dll
+E:\DemoWebStore-main\Entities\bin\Release\net6.0\Entities.pdb
+E:\DemoWebStore-main\Entities\bin\Release\net6.0\Domain.dll
+E:\DemoWebStore-main\Entities\bin\Release\net6.0\Domain.pdb
+E:\DemoWebStore-main\Entities\obj\Release\net6.0\Entities.csproj.AssemblyReference.cache
+E:\DemoWebStore-main\Entities\obj\Release\net6.0\Entities.GeneratedMSBuildEditorConfig.editorconfig
+E:\DemoWebStore-main\Entities\obj\Release\net6.0\Entities.AssemblyInfoInputs.cache
+E:\DemoWebStore-main\Entities\obj\Release\net6.0\Entities.AssemblyInfo.cs
+E:\DemoWebStore-main\Entities\obj\Release\net6.0\Entities.csproj.CoreCompileInputs.cache
+E:\DemoWebStore-main\Entities\obj\Release\net6.0\Entities.csproj.CopyComplete
+E:\DemoWebStore-main\Entities\obj\Release\net6.0\Entities.dll
+E:\DemoWebStore-main\Entities\obj\Release\net6.0\refint\Entities.dll
+E:\DemoWebStore-main\Entities\obj\Release\net6.0\Entities.pdb
+E:\DemoWebStore-main\Entities\obj\Release\net6.0\Entities.genruntimeconfig.cache
+E:\DemoWebStore-main\Entities\obj\Release\net6.0\ref\Entities.dll

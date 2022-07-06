@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/musicstoredbserver/databases/Store_data",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:DataConnectionAzure"
+    },
+    "mssql2": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourcegroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/musicstoredbserver/databases/Store_identity",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:IdentityConnectionAzure"
+    },
+    "mssql3": {
+      "ignored": "true",
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:DataConnection"
+    },
+    "mssql4": {
+      "ignored": "true",
+      "type": "mssql",
+      "connectionId": "ConnectionStrings:IdentityConnection"
+    }
+  }
+}
